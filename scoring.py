@@ -8,6 +8,7 @@ from Levenshtein import distance
 
 def rank(in_path, out_path, routers):
     pair_score = []
+    log_file = open("log.txt", 'w')
     for i in range(len(routers)):
         for j in range(i+1, len(routers)):
             pair = (routers[i], routers[j])
@@ -22,7 +23,8 @@ def rank(in_path, out_path, routers):
     for p1 in router_map:
         p = router_map[p1]
         p2 = p.r2 if p1 == p.r1 else p.r1
-        print(p1, p2, p.m_score, p.k_score, p.edit_d)
+        log_line = p1 + " " + p2 + " " +  str(p.m_score) + " " + str(p.k_score) + " " + str(p.edit_d) + "\n"
+        log_file.write(log_line)
     return router_map
 
 
@@ -90,21 +92,7 @@ def get_neighbor_pair_score(ngh_list1, ngh_list2):
         pair_map.append(ngh_list1[row])
         pair_map.append(ngh_list2[column])
         neighbor_map[pair_map[0]] = pair_map[1]
-        score = score + matrix[row][column]  
-    # x = 0 
-    # score = 0 
-    # neighbor_map = []
-    # for int_ip in ngh_list1_int:
-    #     mod_sub = min( (abs(val - int_ip), idx) for (idx,val) in enumerate(ngh_list2_int))
-    #     score += mod_sub[0]
-    #     pair_map = []
-    #     pair_map.append(ngh_list1[x])
-    #     pair_map.append(ngh_list2[mod_sub[1]])
-    #     if pair_map[1] in [nghs[1] for nghs in neighbor_map]:
-    #         print("Multiple Neighbors are getting mapped to Single Neighbor")
-    #         return []
-    #     neighbor_map.append(pair_map)
-    #     x = x + 1
+        score = score + matrix[row][column]
     return neighbor_map, score
 
 class Pair:
@@ -120,7 +108,7 @@ def main():
     path = sys.argv[1]
     directory = "utils/bc/"
     routers = [f[:-5] for f in os.listdir(path)]
-    rank(path, directory, routers)
+    rank(path, directory, routers[:5])
 
 if __name__ == "__main__":
     main()
