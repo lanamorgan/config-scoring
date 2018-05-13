@@ -1,0 +1,39 @@
+#!/bin/bash
+
+if [ ! -d "batfish" ]; then
+	git clone git@github.com:batfish/batfish.git
+	cd batfish
+	version=`lsb_release -rs`
+	if [[ "$version" == '14.04' ]]; then
+	   sudo tools/install_z3_ubuntu.sh /usr
+	elif [[ "$version" == '16.04' ]]; then
+	   sudo apt-get install gcc g++ make automake autoconf libtool
+	   sudo tools/install_z3_ubuntu.sh /usr
+	fi
+	source tools/batfish_functions.sh
+	batfish_build_all
+else
+	cd batfish
+	source tools/batfish_functions.sh
+fi
+
+echo "Enter Full Path to Configs:"
+read CONFIGS_PATH
+CONFIGS_PATH+="/*" 
+mkdir  -p Testrig/configs
+cp  `grep -rnl "router bgp" $CONFIGS_PATH` Testrig/configs
+allinone -cmdfile ../commands > ../allnodes.json
+rm -r Testrig
+cd ..
+mkdir BatfishJSONs
+python single_json_generator.py
+#git clone git@github.com:alanamramjit/config-scoring.git
+python -c "import munkres" &> /dev/null
+if [ $? -eq 1 ]; then
+    sudo pip install munkres
+fi
+python -c "import Levenshtein" &> /dev/null
+if [ $? -eq 1 ]; then
+    sudo pip install python-Levenshtein
+fi
+python scoring.py BatfishJSONs/
