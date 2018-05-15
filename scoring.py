@@ -5,10 +5,11 @@ from os.path import isfile, join
 import os
 from munkres import Munkres
 from Levenshtein import distance
+import time
 
 def rank(in_path, out_path, routers):
     pair_score = []
-    log_file = open("log.txt", 'w')
+    log_file = open("log"+str(time.time())+".txt", 'w')
     for i in range(len(routers)):
         for j in range(i+1, len(routers)):
             pair = (routers[i], routers[j])
@@ -108,7 +109,7 @@ def main():
     path = sys.argv[1]
     directory = "utils/bc/"
     routers = [f[:-5] for f in os.listdir(path)]
-    rank(path, directory, routers[:5])
+    rank(path, directory, routers)
 
 if __name__ == "__main__":
     main()

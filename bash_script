@@ -23,7 +23,7 @@ CONFIGS_PATH+="/*"
 mkdir  -p Testrig/configs
 cp  `grep -rnl "router bgp" $CONFIGS_PATH` Testrig/configs
 allinone -cmdfile ../commands > ../allnodes.json
-rm -r Testrig
+rm -rf Testrig
 cd ..
 mkdir BatfishJSONs
 python single_json_generator.py
@@ -37,3 +37,4 @@ if [ $? -eq 1 ]; then
     sudo pip install python-Levenshtein
 fi
 python scoring.py BatfishJSONs/
+rm -rf BatfishJSONs
