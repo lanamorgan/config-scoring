@@ -1,14 +1,19 @@
 #!/bin/bash
 
 if [ ! -d "batfish" ]; then
-	git clone git@github.com:batfish/batfish.git
+	git clone https://github.com/batfish/batfish.git
 	cd batfish
-	version=`lsb_release -rs`
-	if [[ "$version" == '14.04' ]]; then
-	   sudo tools/install_z3_ubuntu.sh /usr
-	elif [[ "$version" == '16.04' ]]; then
-	   sudo apt-get install gcc g++ make automake autoconf libtool
-	   sudo tools/install_z3_ubuntu.sh /usr
+	if [ -f /etc/lsb-release ]; then		
+		version=`lsb_release -rs`
+		if [[ "$version" == '14.04' ]]; then
+		   sudo tools/install_z3_ubuntu.sh /usr
+		elif [[ "$version" == '16.04' ]]; then
+		   sudo apt-get install gcc g++ make automake autoconf libtool
+		   sudo tools/install_z3_ubuntu.sh /usr
+		fi
+	elif [ -f /etc/redhat-release ]; then
+		sudo yum install gcc g++ make automake autoconf libtool
+		sudo tools/install_z3_rhel_x86_64.sh /usr
 	fi
 	source tools/batfish_functions.sh
 	batfish_build_all
