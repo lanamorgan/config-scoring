@@ -119,6 +119,8 @@ def get_neighbor_pair_score(ngh_list1, ngh_list2):
 
     # make this as good as possible---return a list if at all possible
     # score it by the inverse of the sum of differences
+    if len(ngh_list1)==0 or len(ngh_list2) == 0:
+        return list(),100000
     ngh_list1_int = [address_to_masked_value(ngh.split('/')[0],'32') for ngh in ngh_list1 ]
     ngh_list2_int = [address_to_masked_value(ngh.split('/')[0],'32') for ngh in ngh_list2 ]
     matrix = []
