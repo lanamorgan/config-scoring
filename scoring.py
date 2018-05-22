@@ -13,6 +13,7 @@ def rank(in_path, out_path, routers):
     for i in range(len(routers)):
         for j in range(i+1, len(routers)):
             pair = (routers[i], routers[j])
+            mapping_from_JSON(in_path,pair)
             pair_score.append(find_mapping(in_path, pair, out_path, out_path))
     pair_score = sorted(pair_score, key = lambda p: p.m_score + p.k_score+ p.edit_d)
     router_map = {}
@@ -27,6 +28,50 @@ def rank(in_path, out_path, routers):
         log_line = p1 + " " + p2 + " " +  str(p.m_score) + " " + str(p.k_score) + " " + str(p.edit_d) + "\n"
         log_file.write(log_line)
     return router_map
+
+
+'''
+"HundredGigabitEthernet0/2/0/3": {
+                    "declaredNames": [
+                        "HundredGigE0/2/0/3"
+                    ], 
+                    "prefix": "169.232.4.12/31",      
+                    "description": "bd11f2.csb1.ucla.net:ns:et-0/0/0 CID#310-200-3410", 
+                    "allPrefixes": [
+                        "169.232.4.12/31"
+                    ], 
+                    "name": "HundredGigabitEthernet0/2/0/3", 
+                    "bandwidth": 1000000000000.0, 
+                    "mtu": 9192, 
+                }, 
+Made an assumption that declaredNames and allprefixes are just of unit size.
+'''
+
+def interface_name_mapping(data, item):
+    prefix_to_intf = {}
+    ip = None
+    for intf in data['nodes'][item]['interfaces']:
+        intf_obj = data['nodes'][item]['interfaces'][intf]
+        if intf_obj.get('allPrefixes'):
+            ip = str(intf_obj.get('allPrefixes')[0])
+            intf_name = str(intf_obj.get('declaredNames')[0])
+            description = str(intf_obj.get('description'))
+            prefix_to_intf[ip] = (intf_name,description)
+    return prefix_to_intf
+
+def mapping_from_JSON(path,pair):
+    pdb.set_trace()
+    (r1, r2) = pair
+    r1_file = path + r1 + ".json"
+    r2_file = path + r2 + ".json"
+    with open(r1_file, 'r') as data_file:    
+        data = json.load(data_file)
+    r1_intf_dict = interface_name_mapping(data,[y for y in data['nodes']][0])
+    with open(r2_file, 'r') as data_file:    
+        data = json.load(data_file)
+    r2_intf_dict = interface_name_mapping(data,[y for y in data['nodes']][0])
+
+
 
 
 """
