@@ -13,7 +13,6 @@ def rank(in_path, out_path, routers):
     for i in range(len(routers)):
         for j in range(i+1, len(routers)):
             pair = (routers[i], routers[j])
-            mapping_from_JSON(in_path,pair)
             pair_score.append(find_mapping(in_path, pair, out_path, out_path))
     pair_score = sorted(pair_score, key = lambda p: p.m_score + p.k_score+ p.edit_d)
     router_map = {}
@@ -75,7 +74,7 @@ def get_neighbor_pair_score(ngh_list1, ngh_list2):
     # make this as good as possible---return a list if at all possible
     # score it by the inverse of the sum of differences
     if len(ngh_list1)==0 or len(ngh_list2) == 0:
-        return list(),100000
+        return {},100000
     ngh_list1_int = [address_to_masked_value(ngh.split('/')[0],'32') for ngh in ngh_list1 ]
     ngh_list2_int = [address_to_masked_value(ngh.split('/')[0],'32') for ngh in ngh_list2 ]
     matrix = []
