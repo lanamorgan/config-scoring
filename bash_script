@@ -41,5 +41,5 @@ python -c "import Levenshtein" &> /dev/null
 if [ $? -eq 1 ]; then
     sudo pip install python-Levenshtein
 fi
-python scoring.py BatfishJSONs/
+python ip_matching.py BatfishJSONs/
 rm -rf BatfishJSONs
