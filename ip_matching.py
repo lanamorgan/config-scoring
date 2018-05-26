@@ -35,7 +35,8 @@ def rank(in_path, out_path, routers):
             router_map[pair.r2] = pair
     for p1 in router_map:
         p = router_map[p1]
-        p2 = p.r2 if p1 == p.r1 else p.r1       
+        p2 = p.r2 if p1 == p.r1 else p.r1    
+        swap = 0 if  p1 == p.r1 else 1  
         log_line = bcolors.WARNING + "Router1: "+ p1 + "\nRouter2: "+ p2 +\
          "\nNgh_Ip_Score: " +  str(p.m_score) + "\nEdit_score: "  + str(p.edit_d) + bcolors.ENDC +  "\n"
         
@@ -43,8 +44,13 @@ def rank(in_path, out_path, routers):
             # pdb.set_trace()
             r1_desc = p.r1_bgp_nghs[key] if p.r1_bgp_nghs[key]!=None else "" 
             r2_desc = p.r2_bgp_nghs[value] if p.r2_bgp_nghs[value]!=None else "" 
-            log_line = log_line +"R1:   (" +key + " , "+ r1_desc +\
+            if swap == 0:
+                log_line = log_line +"R1:   (" +key + " , "+ r1_desc +\
                        ")\nR2:   (" + value + " , " + r2_desc  +") \n"        
+            
+            else:
+                log_line = log_line +"R1:   (" +value + " , "+ r2_desc +\
+                       ")\nR2:   (" + key + " , " + r1_desc  +") \n"     
         log_line = log_line + "\n\n"
         log_file.write(log_line)
 
@@ -58,12 +64,17 @@ def rank(in_path, out_path, routers):
             router_map[pair.r2] = pair
     for p1 in router_map:
         p = router_map[p1]
-        p2 = p.r2 if p1 == p.r1 else p.r1
+        p2 = p.r2 if p1 == p.r1 else p.r1 
+        swap = 0 if  p1 == p.r1 else 1  
         log_line = bcolors.WARNING + "Router1: "+ p1 + "\nRouter2: "+ p2 +\
          "\nIntf_Score: " +  str(p.intf_score) + "\nEdit_score: "  + str(p.edit_d) + bcolors.ENDC +  "\n"
         for key,value in p.intf_map.iteritems():
-            log_line = log_line +"R1:   (" +key + " , "+ p.r1_intf[key][0] + " , "+ p.r1_intf[key][1] +\
+            if swap == 0:
+                log_line = log_line +"R1:   (" +key + " , "+ p.r1_intf[key][0] + " , "+ p.r1_intf[key][1] +\
                        ")\nR2:   (" + value + " , " + p.r2_intf[value][0] + " , "+ p.r2_intf[value][1] +") \n"        
+            else:
+                log_line = log_line +"R1:   (" +value + " , "+ p.r2_intf[value][0] + " , "+ p.r2_intf[value][1] +\
+                       ")\nR2:   (" + key + " , " + p.r1_intf[key][0] + " , "+ p.r1_intf[key][1] +") \n"        
         log_line = log_line + "\n\n"
         log_file.write(log_line) 
 

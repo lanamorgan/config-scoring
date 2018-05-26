@@ -18,22 +18,22 @@ Edit_score: 3[0m
 Router2: dr03f2.csb1
 Ngh_Ip_Score: 7
 Edit_score: 8[0m
-R1:   (169.232.13.211/32 , General Services)
-R2:   (169.232.13.209/32 , General Services) 
-R1:   (169.232.13.205/32 , SOMITS ckt# (310)200-3321)
-R2:   (169.232.13.207/32 , SOMITS ckt# (310)200-3322) 
-R1:   (169.232.1.13/32 , dr03f1.anderson)
-R2:   (169.232.1.12/32 , dr03f2.csb1) 
-R1:   (169.232.13.201/32 , SOMITS ckt# (310)200-3288)
-R2:   (169.232.13.203/32 , SOMITS ckt# (310)200-3289) 
+R1:   (169.232.13.209/32 , General Services)
+R2:   (169.232.13.211/32 , General Services) 
+R1:   (169.232.13.207/32 , SOMITS ckt# (310)200-3322)
+R2:   (169.232.13.205/32 , SOMITS ckt# (310)200-3321) 
+R1:   (169.232.1.12/32 , dr03f2.csb1)
+R2:   (169.232.1.13/32 , dr03f1.anderson) 
+R1:   (169.232.13.203/32 , SOMITS ckt# (310)200-3289)
+R2:   (169.232.13.201/32 , SOMITS ckt# (310)200-3288) 
 
 
 [93mRouter1: rtr51fb.jsei
 Router2: rtr51f1.rieber
 Ngh_Ip_Score: 2
 Edit_score: 6[0m
-R1:   (169.232.12.226/32 , CSB1)
-R2:   (169.232.12.224/32 , Anderson) 
+R1:   (169.232.12.224/32 , Anderson)
+R2:   (169.232.12.226/32 , CSB1) 
 
 
 [93mRouter1: cr00f1.anderson
@@ -50,10 +50,10 @@ R2:   (169.232.1.1/32 , cr00f2.csb1)
 Router2: rtr51f1.ps-8
 Ngh_Ip_Score: 5
 Edit_score: 6[0m
-R1:   (169.232.13.9/32 , CHS)
-R2:   (169.232.13.13/32 , Sproul) 
-R1:   (149.142.56.1/32 , )
-R2:   (149.142.56.2/32 , ) 
+R1:   (169.232.13.13/32 , Sproul)
+R2:   (169.232.13.9/32 , CHS) 
+R1:   (149.142.56.2/32 , )
+R2:   (149.142.56.1/32 , ) 
 
 
 [93mRouter1: rtr54f3e.cogen
@@ -90,12 +90,12 @@ R2:   (149.142.56.2/32 , )
 Router2: rtr54f3e.cogen
 Ngh_Ip_Score: 5
 Edit_score: 1[0m
-R1:   (169.232.12.244/32 , Anderson (dr00f1.anderson))
-R2:   (169.232.12.242/32 , CSB1 (dr00f2.csb1)) 
-R1:   (169.232.13.208/32 , CSB1 (dr03f2.csb1))
-R2:   (169.232.13.210/32 , CSB1 (dr03f2.csb1)) 
-R1:   (149.142.3.34/32 , iBGP--rtr53f3e--rtr54f3e)
-R2:   (149.142.3.33/32 , iBGP--rtr54f3e--rtr53f3e) 
+R1:   (169.232.12.242/32 , CSB1 (dr00f2.csb1))
+R2:   (169.232.12.244/32 , Anderson (dr00f1.anderson)) 
+R1:   (169.232.13.210/32 , CSB1 (dr03f2.csb1))
+R2:   (169.232.13.208/32 , CSB1 (dr03f2.csb1)) 
+R1:   (149.142.3.33/32 , iBGP--rtr54f3e--rtr53f3e)
+R2:   (149.142.3.34/32 , iBGP--rtr53f3e--rtr54f3e) 
 
 
 [93mRouter1: rtr52fp2.weyburn-olive
@@ -130,10 +130,10 @@ R2:   (169.232.12.224/32 , Anderson)
 Router2: br51.cnsi
 Ngh_Ip_Score: 3
 Edit_score: 1[0m
-R1:   (172.16.32.255/32 , ibgp)
-R2:   (172.16.32.254/32 , ibgp) 
-R1:   (169.232.12.246/32 , CBN CSB1)
-R2:   (169.232.12.248/32 , CBN Anderson) 
+R1:   (172.16.32.254/32 , ibgp)
+R2:   (172.16.32.255/32 , ibgp) 
+R1:   (169.232.12.248/32 , CBN Anderson)
+R2:   (169.232.12.246/32 , CBN CSB1) 
 
 
 [93mRouter1: bd11f1.anderson
@@ -146,10 +146,10 @@ Edit_score: 3[0m
 Router2: rtr52f1.covel
 Ngh_Ip_Score: 3
 Edit_score: 1[0m
-R1:   (172.16.209.1/32 , )
-R2:   (172.16.209.2/32 , ) 
-R1:   (169.232.12.212/32 , Anderson)
-R2:   (169.232.12.210/32 , CSB1) 
+R1:   (172.16.209.2/32 , )
+R2:   (172.16.209.1/32 , ) 
+R1:   (169.232.12.210/32 , CSB1)
+R2:   (169.232.12.212/32 , Anderson) 
 
 
 [93mRouter1: dr02f2.csb1
@@ -198,10 +198,10 @@ R2:   (169.232.13.203/32 , SOMITS ckt# (310)200-3289)
 Router2: rtr52fp2.weyburn-olive
 Ngh_Ip_Score: 3
 Edit_score: 1[0m
-R1:   (169.232.12.200/32 , Anderson)
-R2:   (169.232.12.198/32 , CSB1) 
-R1:   (172.16.208.1/32 , )
-R2:   (172.16.208.2/32 , ) 
+R1:   (169.232.12.198/32 , CSB1)
+R2:   (169.232.12.200/32 , Anderson) 
+R1:   (172.16.208.2/32 , )
+R2:   (172.16.208.1/32 , ) 
 
 
 [93mRouter1: rtr51f2.covel
@@ -218,10 +218,10 @@ R2:   (169.232.12.194/32 , CSB1)
 Router2: rtr51f1.rieber
 Ngh_Ip_Score: 3
 Edit_score: 1[0m
-R1:   (169.232.12.226/32 , CSB1)
-R2:   (169.232.12.228/32 , Anderson) 
-R1:   (172.16.210.2/32 , )
-R2:   (172.16.210.1/32 , ) 
+R1:   (169.232.12.228/32 , Anderson)
+R2:   (169.232.12.226/32 , CSB1) 
+R1:   (172.16.210.1/32 , )
+R2:   (172.16.210.2/32 , ) 
 
 
 [93mRouter1: cr04f1.anderson
@@ -248,18 +248,18 @@ R2:   (169.232.1.1/32 , cr00f2.csb1)
 Router2: rtr00f11.wc
 Ngh_Ip_Score: 1
 Edit_score: 5[0m
-R1:   (169.232.13.41/32 , )
-R2:   (169.232.13.42/32 , External Affairs) 
+R1:   (169.232.13.42/32 , External Affairs)
+R2:   (169.232.13.41/32 , ) 
 
 
 [93mRouter1: rtr51f2.deneve-holly
 Router2: rtr51f2.covel
 Ngh_Ip_Score: 3
 Edit_score: 9[0m
-R1:   (172.16.211.2/32 , )
-R2:   (172.16.211.1/32 , ) 
-R1:   (169.232.12.196/32 , Anderson)
-R2:   (169.232.12.194/32 , CSB1) 
+R1:   (172.16.211.1/32 , )
+R2:   (172.16.211.2/32 , ) 
+R1:   (169.232.12.194/32 , CSB1)
+R2:   (169.232.12.196/32 , Anderson) 
 
 
 [93mRouter1: dr00f1.anderson
@@ -318,7 +318,7 @@ Ngh_Ip_Score: 1
 Edit_score: 7[0m
 R1:   (164.67.218.251/32 , rtr52fg.powell)
 R2:   (164.67.218.251/32 , rtr52fg.powell) 
-R1:   (172.16.171.253/32 , ibgp)
-R2:   (172.16.171.252/32 , ibgp) 
+R1:   (172.16.171.252/32 , ibgp)
+R2:   (172.16.171.253/32 , ibgp) 
 
 
